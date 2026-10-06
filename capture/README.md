@@ -26,7 +26,7 @@ Click **Deploy**. Google asks you to authorise it — it's your own script writi
 
 Copy the **Web app URL**. It looks like `https://script.google.com/macros/s/AKfy…/exec`.
 
-"Anyone" means anyone who knows that URL can send it a request, and the URL is in the page source, so assume it is known. It cannot read the sheet. See [Abuse protection](#abuse-protection) for what the script does about that. If it ever gets abused anyway, create a new deployment and the old URL dies.
+"Anyone" means anyone who knows that URL can send it a request, and the URL is in the page source, so assume it is known. It cannot read the sheet. See [Abuse protection](#abuse-protection) for what the script does about that. If it ever gets abused anyway, create a new deployment, point `CAPTURE_ENDPOINT` at its URL, then archive the old deployment (**Deploy → Manage deployments → Archive**). Creating a new deployment alone does not stop the old URL working.
 
 ## 4. Wire it into the site
 
