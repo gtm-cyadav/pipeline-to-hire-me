@@ -21,10 +21,32 @@
 <meta name="twitter:description" content="You are the lead. This is the pipeline scoring you.">
 <meta name="twitter:image" content="https://gtm-cyadav.github.io/pipeline-to-hire-me/og.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%8E%AF</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
+  /* self-hosted (SIL OFL 1.1); see fonts/README.md */
+  @font-face{ font-family:'Archivo'; font-style:normal; font-weight:400 700; font-display:swap;
+    src:url("fonts/archivo-var.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap;
+    src:url("fonts/ibm-plex-mono-400.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'IBM Plex Mono'; font-style:normal; font-weight:500; font-display:swap;
+    src:url("fonts/ibm-plex-mono-500.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'IBM Plex Mono'; font-style:normal; font-weight:600; font-display:swap;
+    src:url("fonts/ibm-plex-mono-600.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'Spectral'; font-style:italic; font-weight:500; font-display:swap;
+    src:url("fonts/spectral-italic-500.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'Spectral'; font-style:normal; font-weight:400; font-display:swap;
+    src:url("fonts/spectral-400.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'Spectral'; font-style:normal; font-weight:500; font-display:swap;
+    src:url("fonts/spectral-500.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face{ font-family:'Spectral'; font-style:normal; font-weight:600; font-display:swap;
+    src:url("fonts/spectral-600.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   img{max-width:100%;}
   [hidden]{display:none!important;}
   :root{
@@ -35,19 +57,21 @@
     --line-2:rgba(16,22,20,.22);
     --ink:#0E1413;
     --ink-2:#556059;
-    --ink-3:#8A938C;
-    --accent:#8A6A1F;
+    --ink-3:#626A63;
+    --accent:#82641D;
     --accent-ink:#FBFBF9;
     --accent-soft:rgba(138,106,31,.11);
     --cold:#6B7A86;
     --warm:#A07B2A;
     --hot:#BE4F2D;
     --good:#2C7A54;
+    /* text-safe variants of the status colours (4.5:1 on every panel); the plain ones are for fills */
+    --cold-t:#5D6974; --warm-t:#816322; --hot-t:#AE4829; --good-t:#2A7450;
     --code-bg:#0E1413;
     --code-ink:#D6DAD2;
     --code-key:#C9A96A;
     --code-str:#94B4A4;
-    --code-dim:#6A746D;
+    --code-dim:#78837B;
     --sheen:inset 0 1px 0 rgba(255,255,255,.7);
   }
   @media (prefers-color-scheme: dark){
@@ -59,7 +83,7 @@
       --line-2:rgba(236,239,236,.20);
       --ink:#ECEFEC;
       --ink-2:#9BA59E;
-      --ink-3:#6B756F;
+      --ink-3:#7C8780;
       --accent:#C9A96A;
       --accent-ink:#0B0F0E;
       --accent-soft:rgba(201,169,106,.13);
@@ -67,21 +91,23 @@
       --warm:#C9A96A;
       --hot:#DD6E4A;
       --good:#4FA97C;
+      --cold-t:#778692; --warm-t:#C9A96A; --hot-t:#DD6E4A; --good-t:#4FA97C;
       --code-bg:#070A09;
       --code-ink:#D6DAD2;
       --code-key:#C9A96A;
       --code-str:#94B4A4;
-      --code-dim:#5E6862;
+      --code-dim:#727F77;
       --sheen:inset 0 1px 0 rgba(255,255,255,.035);
     }
   }
   :root[data-theme="dark"]{
     --ground:#090C0B; --panel:#0F1413; --panel-2:#161C1A;
     --line:rgba(236,239,236,.10); --line-2:rgba(236,239,236,.20);
-    --ink:#ECEFEC; --ink-2:#9BA59E; --ink-3:#6B756F;
+    --ink:#ECEFEC; --ink-2:#9BA59E; --ink-3:#7C8780;
     --accent:#C9A96A; --accent-ink:#0B0F0E; --accent-soft:rgba(201,169,106,.13);
     --cold:#71818D; --warm:#C9A96A; --hot:#DD6E4A; --good:#4FA97C;
-    --code-bg:#070A09; --code-ink:#D6DAD2; --code-key:#C9A96A; --code-str:#94B4A4; --code-dim:#5E6862;
+    --cold-t:#778692; --warm-t:#C9A96A; --hot-t:#DD6E4A; --good-t:#4FA97C;
+    --code-bg:#070A09; --code-ink:#D6DAD2; --code-key:#C9A96A; --code-str:#94B4A4; --code-dim:#727F77;
     --sheen:inset 0 1px 0 rgba(255,255,255,.035);
   }
 
@@ -365,7 +391,7 @@
     font-size:11.5px; color:var(--ink-2); line-height:1.5;
   }
   .nudge b{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-weight:600; }
-  .nudge.clear b{ color:var(--good); }
+  .nudge.clear b{ color:var(--good-t); }
 
   /* ---------- stage progress ---------- */
   .stage[data-seen="1"] .stage-num{ border-color:var(--accent); color:var(--accent); }
@@ -416,6 +442,18 @@
     .cta-row .btn{ flex:1; text-align:center; }
   }
 
+  /* ---------- screen-reader helpers ---------- */
+  .sr-only{
+    position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0;
+    overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;
+  }
+  .skip{
+    position:absolute; left:12px; top:-60px; z-index:100; padding:9px 14px;
+    background:var(--accent); color:var(--accent-ink); font-size:13px; text-decoration:none;
+  }
+  .skip:focus{ top:10px; }
+  main:focus{ outline:none; }
+
   /* ---------- static CV ----------
      The plain version of everything above. Hidden on screen; it is what prints,
      what shows with JavaScript off, and what a crawler reads. Generated by
@@ -440,7 +478,7 @@
 
   @media print{
     @page{ margin:15mm 14mm; }
-    header, .wrap, #toast, .no-print{ display:none!important; }
+    header, .wrap, #toast, .skip, .no-print{ display:none!important; }
     html, body{ background:#fff!important; color:#000!important; cursor:auto!important; }
     body{ font-size:12px; }
     .cv-static{ display:block; max-width:none; padding:0; color:#000; }
@@ -459,11 +497,13 @@
   }
 </style>
 <noscript><style>
-  header, .wrap, #toast, .no-print{ display:none!important; }
+  header, .wrap, #toast, .skip, .no-print{ display:none!important; }
   .cv-static{ display:block; }
 </style></noscript>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to the CV</a>
 
 <header>
   <span class="pipe" id="pipe" role="img" aria-label="Your position in the pipeline"></span>
@@ -475,17 +515,17 @@
 </header>
 
 <div class="wrap">
-  <div class="masthead">
+  <section class="masthead" aria-labelledby="title">
     <div class="micro">Inbound lead · session open · scored live</div>
     <div class="rule"></div>
-    <h1>You are the lead. This is the pipeline <em>scoring you.</em></h1>
+    <h1 id="title">You are the lead. This is the pipeline <em>scoring you.</em></h1>
     <div class="rule" style="background:linear-gradient(90deg, var(--line), transparent 60%); margin:22px 0 18px;"></div>
     <p class="dek">Chetan Yadav built a lead scoring system for a GTM team — PostgreSQL, a logistic regression model, a Slack bot that fires on hot leads. <b>This page is that system, pointed at you.</b> Fill in the enrichment record, tell it which role you're hiring for, and the evidence below re-ranks and rewrites itself for that role.</p>
     <div class="cue" id="cue"><span class="arrow">↓</span>keep scrolling — the intake is only the first stage</div>
-  </div>
+  </section>
 
   <div class="cols">
-    <main>
+    <main id="main" tabindex="-1">
       <!-- 01 -->
       <section class="stage" data-done="1">
         <div class="stage-num">01</div>
@@ -508,7 +548,7 @@
             <tr><td>connection</td><td id="r-conn" class="pending">resolving…</td></tr>
             <tr><td>appearance</td><td id="r-theme" class="pending">resolving…</td></tr>
             <tr><td>days_since_engagement</td><td id="r-rec" class="pending">resolving…</td></tr>
-            <tr><td>status</td><td><span id="r-status" style="color:var(--cold);">NEW · UNQUALIFIED</span></td></tr>
+            <tr><td>status</td><td><span id="r-status" style="color:var(--cold-t);">NEW · UNQUALIFIED</span></td></tr>
           </table>
         </div>
         <p class="intake-foot" id="intake-foot" hidden><b id="intake-count">0 signals</b> read, none of which left this page. Scroll on — the model has four more stages to put you through.</p>
@@ -648,7 +688,7 @@
             <div class="cta-row">
               <button type="button" class="btn ghost" id="leave-record">Leave this record instead</button>
             </div>
-            <p id="capture-note" style="font-size:12.5px; color:var(--ink-3); margin:12px 0 0;">Sends this record — name, company, seniority, size, intent, role track, score, and whatever you write above — straight to Chetan. No mail client, no follow-up sequence.</p>
+            <p id="capture-note" role="status" aria-live="polite" style="font-size:12.5px; color:var(--ink-3); margin:12px 0 0;">Sends this record — name, company, seniority, size, intent, role track, score, and whatever you write above — straight to Chetan. No mail client, no follow-up sequence.</p>
           </div>
         </div>
       </section>
@@ -678,7 +718,7 @@
         <div class="micro rail-h">Lead score</div>
         <div class="bignum" id="big-score">10<span>/100</span></div>
         <div class="prob" id="big-prob">p(convert) = 0.104</div>
-        <div><span class="statuspill" id="big-pill" style="color:var(--cold);">COLD · ANONYMOUS</span></div>
+        <div><span class="statuspill" id="big-pill" style="color:var(--cold-t);">COLD · ANONYMOUS</span></div>
         <div class="heat"><div class="fill" id="heat-fill" style="width:10%; background:var(--cold);"></div><div class="thr"></div></div>
         <div class="heat-lab"><span>0</span><span>MQL 70</span><span>100</span></div>
         <div class="nudge" id="nudge">Reading the record now.</div>
@@ -693,7 +733,7 @@
       </section>
       <section>
         <div class="micro rail-h">Event log</div>
-        <div class="log" id="log"></div>
+        <div class="log" id="log" role="log" aria-live="off" aria-label="Event log" tabindex="0"></div>
       </section>
     </aside>
   </div>
@@ -803,6 +843,8 @@
 <!-- cv:end -->
 
 <div id="toast"></div>
+<div id="sr-score" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+<div id="sr-alert" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <script>
 (function(){
@@ -864,11 +906,13 @@
   function $(id){ return document.getElementById(id); }
   function num(n,d){ return (n<0?"−":"") + Math.abs(n).toFixed(d===undefined?2:d); }
   function heatColor(s){ return s>=70 ? "var(--hot)" : (s>=45 ? "var(--warm)" : "var(--cold)"); }
+  /* same ramp for text, using the contrast-safe variants */
+  function heatInk(s){ return s>=70 ? "var(--hot-t)" : (s>=45 ? "var(--warm-t)" : "var(--cold-t)"); }
   function statusOf(s){
-    if (state.converted) return {t:"CONVERTED", c:"var(--good)"};
-    if (s>=70) return {t:"MQL · ROUTE TO OWNER", c:"var(--hot)"};
-    if (s>=45) return {t:"WARM · NURTURE", c:"var(--warm)"};
-    return {t: state.name ? "COLD · IDENTIFIED" : "COLD · ANONYMOUS", c:"var(--cold)"};
+    if (state.converted) return {t:"CONVERTED", c:"var(--good-t)"};
+    if (s>=70) return {t:"MQL · ROUTE TO OWNER", c:"var(--hot-t)"};
+    if (s>=45) return {t:"WARM · NURTURE", c:"var(--warm-t)"};
+    return {t: state.name ? "COLD · IDENTIFIED" : "COLD · ANONYMOUS", c:"var(--cold-t)"};
   }
 
   /* ---------------- log ---------------- */
@@ -1128,7 +1172,7 @@
 
       var match=document.createElement("span"); match.className="ev-match";
       match.textContent=rec.m[state.track]+"%";
-      match.style.color = rec.m[state.track]>=90 ? "var(--hot)" : (rec.m[state.track]>=70 ? "var(--warm)" : "var(--ink-3)");
+      match.style.color = rec.m[state.track]>=90 ? "var(--hot-t)" : (rec.m[state.track]>=70 ? "var(--warm-t)" : "var(--ink-3)");
 
       var titles=document.createElement("span"); titles.className="ev-titles";
       var t1=document.createElement("span"); t1.className="ev-t"; t1.textContent=rec.t;
@@ -1171,6 +1215,7 @@
   function fireAlert(score){
     var host=$("toast"); host.innerHTML="";
     var card=document.createElement("div"); card.className="slack";
+    card.setAttribute("role","region"); card.setAttribute("aria-label","Slack alert");
     var av=document.createElement("div"); av.className="av"; av.textContent="LB";
     var body=document.createElement("div"); body.style.flex="1";
     var ch=document.createElement("div"); ch.className="micro"; ch.textContent="#gtm-lead-alerts";
@@ -1183,6 +1228,7 @@
       b.textContent=(state.name||"anonymous lead")+(state.company?" at "+state.company:"");
       bd.appendChild(b);
       bd.appendChild(document.createTextNode(" scored "+score+"/100, reading for "+TRACK_NAME[state.track]+". Routing to Chetan."));
+      $("sr-alert").textContent="Slack alert in #gtm-lead-alerts: "+bd.textContent;
     }
     if(REDUCED){ writeMessage(); }
     else {
@@ -1257,10 +1303,25 @@
     $("sum-line").innerHTML=line;
   }
 
+  /* ---------------- screen reader ----------------
+     The score animates and drifts with scroll and time, so it is not a live
+     region itself. It is announced when the status changes or after a form
+     change, once things settle. */
+  var srLast="", srTimer=null, srKey=null;
+  function announceSoon(){
+    clearTimeout(srTimer);
+    srTimer=setTimeout(function(){
+      var sc=Math.round(sig(zOf())*100);
+      var t="Score "+sc+" out of 100, "+statusOf(sc).t.replace(/ · /g,", ").toLowerCase();
+      if(t!==srLast){ srLast=t; $("sr-score").textContent=t; }
+    },1200);
+  }
+
   /* ---------------- recompute ---------------- */
   function recompute(){
     var z=zOf(), p=sig(z), score=Math.round(p*100), st=statusOf(score);
     lastScore=score;
+    if(st.t!==srKey){ var firstPass=srKey===null; srKey=st.t; if(!firstPass) announceSoon(); }
     $("hdr-status").textContent=st.t.split(" · ")[0];
     $("hdr-dot").style.background=heatColor(score);
     document.body.dataset.heat = score>=70 ? "hot" : (score>=45 ? "warm" : "cold");
@@ -1268,7 +1329,7 @@
     var pill=$("big-pill"); pill.textContent=st.t; pill.style.color=st.c;
     var rs=$("r-status");
     rs.textContent = state.converted ? "CONVERTED" : (score>=70 ? "MQL · ROUTED" : (state.name ? "IDENTIFIED · UNQUALIFIED" : "NEW · UNQUALIFIED"));
-    rs.style.color = state.converted ? "var(--good)" : heatColor(score);
+    rs.style.color = state.converted ? "var(--good-t)" : heatInk(score);
     $("stage-enrich").setAttribute("data-done",(state.seniority!=="none"||state.intent!=="none")?"1":"0");
     $("stage-route").setAttribute("data-done", score>=70?"1":"0");
     $("route-tag").textContent = score>=70 ? "alert fired" : "waiting on threshold";
@@ -1290,7 +1351,7 @@
       state.track=t.k;
       if(trackHistory[trackHistory.length-1]!==t.k) trackHistory.push(t.k);
       log("model.rerank","track="+t.k);
-      renderEvidence(); recompute();
+      renderEvidence(); recompute(); announceSoon();
     });
     tb.appendChild(b);
   });
@@ -1374,7 +1435,7 @@
   });
   [["f-seniority","seniority"],["f-size","size"],["f-intent","intent"]].forEach(function(pair){
     $(pair[0]).addEventListener("change", function(){
-      state[pair[1]]=this.value; log("lead.enrich",pair[1]+"="+this.value); recompute();
+      state[pair[1]]=this.value; log("lead.enrich",pair[1]+"="+this.value); recompute(); announceSoon();
     });
   });
   document.querySelectorAll("[data-code]").forEach(function(btn){
@@ -1473,6 +1534,7 @@
     /* a fast scroll shouldn't leave skipped stages looking unread */
     stageEls.forEach(function(s,i){ if(i<=idx) s.setAttribute("data-seen","1"); });
     $("pipe-name").textContent=stageNames[idx]||"";
+    $("pipe").setAttribute("aria-label","Your position in the pipeline: stage "+(idx+1)+" of "+stageEls.length+", "+(stageNames[idx]||""));
   }
 
   /* dwell is time actually spent looking at the page, not time the tab stayed open */

@@ -6,7 +6,7 @@ I built a [lead scoring pipeline](https://github.com/gtm-cyadav/gtm-lead-scoring
 
 The visitor is the lead. They get ingested, enriched, scored and routed. Along the way the CV underneath re-ranks and rewrites itself for whichever role they say they're hiring for.
 
-**Live:** enable GitHub Pages on this repo (Settings → Pages → Deploy from `main`, root).
+**Hosting:** it is a static site. To serve it from GitHub Pages: Settings → Pages → Deploy from `main`, root.
 
 ## How it works
 
@@ -43,13 +43,11 @@ Same facts, argued for the job in front of them. Each evidence bullet and skill 
 
 ## Running it
 
-It's one file with no build step and no dependencies.
+The page is one HTML file with no build step and no dependencies. The fonts sit next to it in `fonts/`, so it makes no third-party requests.
 
 ```bash
 open index.html
 ```
-
-Fonts come from Google Fonts; everything else is inline.
 
 ### Print and no-JS version
 
@@ -64,7 +62,7 @@ node tools/build-cv.mjs --check   # exit 1 if it is out of date
 
 ## Lead capture
 
-Scoring runs entirely in the browser — no analytics, no cookies, no tracking. Nothing is sent anywhere unless the visitor presses a button that says it will be.
+Scoring runs entirely in the browser — no analytics, no cookies, no tracking, no third-party requests. Nothing is sent anywhere unless the visitor presses a button that says it will be.
 
 There are two send paths:
 
@@ -75,7 +73,13 @@ To route to Slack instead, point `CAPTURE_ENDPOINT` at an n8n webhook rather tha
 
 ## Stack
 
-Vanilla HTML, CSS and JavaScript. Spectral, Archivo and IBM Plex Mono. No framework, no build, ~1,000 lines.
+Vanilla HTML, CSS and JavaScript, with Spectral, Archivo and IBM Plex Mono self-hosted from `fonts/`. No framework, no build step.
+
+### Accessibility
+
+- Text colours clear 4.5:1 on every panel in both the light and dark themes. The status colours have separate text-safe variants (`--hot-t` and friends); the plain ones are only used for fills.
+- The live score is deliberately not a live region, because it animates and drifts with scroll and time. A screen reader hears the score when the status changes or after a form change, and hears the Slack-style alert when it fires.
+- Skip link, labelled event log, and a pipeline position label that tracks the stage you are in.
 
 ---
 
