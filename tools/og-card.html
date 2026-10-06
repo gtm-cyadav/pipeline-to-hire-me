@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- Source for og.png (1200x630). Render with:  node tools/render-og.mjs -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  *{ box-sizing:border-box; margin:0; }
+  html,body{ width:1200px; height:630px; }
+  body{
+    background:#F0F1EE; color:#0E1413; position:relative; overflow:hidden;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  .frame{ position:absolute; inset:36px; border:1px solid rgba(16,22,20,.22); }
+  .top{
+    position:absolute; left:84px; right:84px; top:78px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:19px; letter-spacing:.14em; text-transform:uppercase; color:#556059; font-weight:500;
+  }
+  .rule{ position:absolute; left:84px; right:84px; top:122px; height:2px; background:linear-gradient(90deg,#8A6A1F,transparent 72%); }
+  h1{
+    position:absolute; left:84px; top:168px; width:730px;
+    font-family:'Spectral',Georgia,serif; font-weight:500; font-size:84px; line-height:1.06; letter-spacing:-.02em;
+  }
+  h1 em{ color:#8A6A1F; font-style:italic; }
+  .score{
+    position:absolute; left:84px; bottom:78px; display:flex; align-items:baseline; gap:18px;
+  }
+  .score b{ font-size:64px; font-weight:600; letter-spacing:-.02em; }
+  .score span{ font-size:22px; color:#556059; letter-spacing:.06em; }
+  .pill{
+    margin-left:10px; padding:7px 16px; border:1.5px solid #BE4F2D; color:#BE4F2D;
+    font-size:18px; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  }
+  .who{ position:absolute; right:84px; bottom:84px; text-align:right; font-size:21px; letter-spacing:.06em; color:#556059; line-height:1.5; }
+  .who strong{ display:block; color:#0E1413; font-weight:600; font-size:26px; letter-spacing:.02em; }
+  svg{ position:absolute; right:84px; top:176px; }
+</style>
+</head>
+<body>
+<div class="frame"></div>
+<div class="top"><span>Inbound lead · scored live</span><span>logit v4</span></div>
+<div class="rule"></div>
+<h1>You are the lead. This is the pipeline <em>scoring you.</em></h1>
+
+<!-- the logistic curve, with the reader's dot past the 0.70 line -->
+<svg width="250" height="250" viewBox="0 0 250 250" aria-hidden="true">
+  <g fill="none" stroke="rgba(16,22,20,.22)" stroke-width="1.5">
+    <path d="M0 0V250H250"/>
+  </g>
+  <line x1="0" y1="75" x2="250" y2="75" stroke="rgba(16,22,20,.35)" stroke-width="1.5" stroke-dasharray="3 7"/>
+  <path id="curve" fill="none" stroke="#8A6A1F" stroke-width="4"
+        d=""/>
+  <circle id="dot" r="10" fill="#BE4F2D" stroke="#F0F1EE" stroke-width="4"/>
+</svg>
+<script>
+  /* sigmoid across z in [-4, 4], dot at z = 1.2 (p ~ 0.77) */
+  var d = "", i, z, p;
+  for (i = 0; i <= 80; i++) {
+    z = -4 + 8 * i / 80; p = 1 / (1 + Math.exp(-z));
+    d += (i ? " L" : "M") + (i / 80 * 250).toFixed(1) + "," + (250 - p * 250 + 0).toFixed(1);
+  }
+  document.getElementById("curve").setAttribute("d", d);
+  z = 1.2; p = 1 / (1 + Math.exp(-z));
+  var dot = document.getElementById("dot");
+  dot.setAttribute("cx", ((z + 4) / 8 * 250).toFixed(1));
+  dot.setAttribute("cy", (250 - p * 250).toFixed(1));
+</script>
+
+<div class="score"><b>77</b><span>/ 100</span><div class="pill">MQL · route to owner</div></div>
+<div class="who"><strong>Chetan Yadav</strong>GTM Scoring Console</div>
+</body>
+</html>
