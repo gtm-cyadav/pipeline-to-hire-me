@@ -51,6 +51,17 @@ open index.html
 
 Fonts come from Google Fonts; everything else is inline.
 
+### Print and no-JS version
+
+The page also carries a plain static CV (`<article id="cv">`). It is hidden on screen, and it is what prints ("Save CV as PDF" in the Route stage), what shows with JavaScript off, and what a crawler reads. It is generated from the same `EVIDENCE` data the page renders, so there is no second copy to keep in step:
+
+```bash
+node tools/build-cv.mjs           # rewrite the block after editing the page data
+node tools/build-cv.mjs --check   # exit 1 if it is out of date
+```
+
+`og.png` is the link-preview image (rendered from `tools/og-card.html` with `node tools/render-og.mjs`, which needs Playwright). The `og:` and `canonical` URLs in `<head>` assume the site is served at `https://gtm-cyadav.github.io/pipeline-to-hire-me/`; change them if it lives elsewhere.
+
 ## Lead capture
 
 Scoring runs entirely in the browser — no analytics, no cookies, no tracking. Nothing is sent anywhere unless the visitor presses a button that says it will be.
