@@ -1,6 +1,6 @@
 # Lead capture setup
 
-Turns the "Leave this record" button on the site into rows in a Google Sheet. Five minutes, no third-party account, no submission limit.
+Turns the "Leave this record" button on the site into rows in a Google Sheet. Five minutes, no third-party account, no cost.
 
 Until `CAPTURE_ENDPOINT` in `index.html` has a URL in it, the button stays hidden and the site sends nothing.
 
@@ -26,7 +26,7 @@ Click **Deploy**. Google asks you to authorise it — it's your own script writi
 
 Copy the **Web app URL**. It looks like `https://script.google.com/macros/s/AKfy…/exec`.
 
-"Anyone" means anyone who knows that URL can append a row. It cannot read the sheet, and the URL is unguessable. If it ever gets abused, create a new deployment and the old URL dies.
+"Anyone" means anyone who knows that URL can send it a request, and the URL is in the page source, so assume it is known. It cannot read the sheet. See [Abuse protection](#abuse-protection) for what the script does about that. If it ever gets abused anyway, create a new deployment and the old URL dies.
 
 ## 4. Wire it into the site
 
@@ -49,6 +49,37 @@ Opening the web app URL directly in a browser returns `{"ok":true,...}` — a qu
 One row per submission: timestamp, lead_id, name, email, company, seniority, company size, intent, role track, score, probability, engagement depth, source, device, and the optional note.
 
 Nothing is sent unless the visitor presses the button, and the page says so in its footer. Keep it that way — silently logging what people type would contradict a promise the page makes to its readers.
+
+## Abuse protection
+
+Every request is treated as hostile. Before anything is written, the script:
+
+- refuses bodies over 8 KB, anything that is not a JSON object, and a `lead_id` that is not plain letters, digits, `_` or `-`;
+- keeps only the fifteen known fields, as text capped at the same lengths the page uses (note 800, name and company 60, email 120, and so on), with control characters removed;
+- turns `score`, `probability` and `engagement` into real, clamped numbers. A value that is not numeric is stored as blank, so none of them can reach the sheet as a formula;
+- stores any text that starts with `=`, `+`, `-` or `@` as plain text, again so nothing is ever evaluated as a formula. This matters because the sheet holds other people's email addresses;
+- drops a malformed email rather than using it as the reply-to.
+
+It also rate-limits, because it cannot see who is calling:
+
+| Limit | Default | When it is hit |
+|---|---|---|
+| Rows per hour, all visitors | 20 | request refused (`rate_limited`) |
+| Submissions per `lead_id` per 6 hours | 3 | request refused (`rate_limited`) |
+| Emails per day | 40 | row is still stored, the email is skipped |
+| Rows in the sheet | 5,000 | request refused (`full`) |
+
+Change them in the `LIMITS` block at the top of `Code.gs`, then redeploy.
+
+The honest trade-off: the limits are global, so a determined flood can use up the hourly allowance and turn real visitors away for that hour. When that happens the page tells them the send failed and points them at the mail handoff, so nobody is stranded, but you will not see their row. Failures return only a short code (`bad_request`, `too_large`, `rate_limited`, `busy`, `full`, `server_error`); the detail goes to the script's own log (**Executions** in the Apps Script editor), never back to the caller.
+
+### Tests
+
+The script's logic runs in Node with the Apps Script services stubbed, so you can check changes before deploying:
+
+```bash
+node --test capture/Code.test.mjs
+```
 
 ## Email notifications
 
